@@ -13,9 +13,9 @@ namespace GuidHelper
 {
     public class StyledButton : Button
     {
-        private bool IsMouseOver => GetFlag(0x0001);
-        private bool IsMouseDown => GetFlag(0x0002);
-        private bool ShowFocusRect => ShowFocusCues && Focused;
+        protected virtual bool IsMouseOver => GetFlag(0x0001);
+        protected virtual bool IsMouseDown => GetFlag(0x0002);
+        protected virtual bool ShowFocusRect => ShowFocusCues && Focused;
 
 
         private bool GetFlag(int flag)

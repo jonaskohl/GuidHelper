@@ -11,16 +11,18 @@ namespace GuidHelper
     {
         public Guid Guid;
         public GuidFormatter Formatter;
+        public string GuidFormatString;
 
         public void RefreshText()
         {
-            Text = Formatter(Guid);
+            //Text = Formatter(Guid);
+            Text = Util.FormatGuid(Guid, GuidFormatString);
         }
 
         protected override void OnClick(EventArgs e)
         {
             base.OnClick(e);
-            Clipboard.SetText(Formatter(Guid));
+            Clipboard.SetText(Util.FormatGuid(Guid, GuidFormatString));
             MessageBox.Show("Copied GUID to clipboard!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }

@@ -33,10 +33,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.newGuidButton = new GuidHelper.StyledButton();
             this.aboutButton = new GuidHelper.StyledButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -96,6 +96,27 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(327, 30);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
+            // newGuidButton
+            // 
+            this.newGuidButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.newGuidButton.Location = new System.Drawing.Point(3, 3);
+            this.newGuidButton.Name = "newGuidButton";
+            this.newGuidButton.Size = new System.Drawing.Size(291, 24);
+            this.newGuidButton.TabIndex = 1;
+            this.newGuidButton.Text = "&New GUID";
+            this.newGuidButton.UseVisualStyleBackColor = true;
+            this.newGuidButton.Click += new System.EventHandler(this.newGuidButton_Click);
+            // 
+            // aboutButton
+            // 
+            this.aboutButton.Image = global::GuidHelper.Properties.Resources.guidhelper_about;
+            this.aboutButton.Location = new System.Drawing.Point(300, 3);
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.Size = new System.Drawing.Size(24, 24);
+            this.aboutButton.TabIndex = 2;
+            this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.tableLayoutPanel1);
@@ -118,27 +139,6 @@
             this.panel3.TabIndex = 5;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
-            // newGuidButton
-            // 
-            this.newGuidButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newGuidButton.Location = new System.Drawing.Point(3, 3);
-            this.newGuidButton.Name = "newGuidButton";
-            this.newGuidButton.Size = new System.Drawing.Size(291, 24);
-            this.newGuidButton.TabIndex = 1;
-            this.newGuidButton.Text = "&New GUID";
-            this.newGuidButton.UseVisualStyleBackColor = true;
-            this.newGuidButton.Click += new System.EventHandler(this.newGuidButton_Click);
-            // 
-            // aboutButton
-            // 
-            this.aboutButton.Image = global::GuidHelper.Properties.Resources.guidhelper_about;
-            this.aboutButton.Location = new System.Drawing.Point(300, 3);
-            this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(24, 24);
-            this.aboutButton.TabIndex = 2;
-            this.aboutButton.UseVisualStyleBackColor = true;
-            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -153,7 +153,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Guid Helper";
+            this.Text = "GUID Helper";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);

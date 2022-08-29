@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -55,13 +56,34 @@ namespace GuidHelper
             }
         }
 
+        void LoadDefaultFormats()
+        {
+            buttonList = CreateButtonsForFormats(Formats.FormatsList);
+        }
+
         public MainForm()
         {
             InitializeComponent();
 
             guidButtonFont = new Font("Courier New", 8);
 
-            buttonList = CreateButtonsForFormatters(Formatters.FormattersList);
+            string formatsFilePath = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "GUIDFormats.txt");
+            if (File.Exists(formatsFilePath))
+            {
+                try
+                {
+                    buttonList = CreateButtonsForFormats(File.ReadAllLines(formatsFilePath).Where(x => !string.IsNullOrEmpty(x)).ToArray());
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Format list contains invalid GUID formats!", "GUID Helper", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    LoadDefaultFormats();
+                }
+            }
+            else
+            {
+                LoadDefaultFormats();
+            }
 
             panel1.SuspendLayout();
             panel1.Controls.AddRange(
@@ -92,8 +114,19 @@ namespace GuidHelper
 
         public GuidButton[] CreateButtonsForFormatters(params GuidFormatter[] formatters)
         {
-            return formatters.Select(f => new GuidButton() {
+            return formatters.Select(f => new GuidButton()
+            {
                 Formatter = f,
+                Dock = DockStyle.Top,
+                Font = guidButtonFont,
+                UseVisualStyleBackColor = true
+            }).ToArray();
+        }
+        public GuidButton[] CreateButtonsForFormats(params string[] formats)
+        {
+            return formats.Select(f => new GuidButton()
+            {
+                GuidFormatString = f,
                 Dock = DockStyle.Top,
                 Font = guidButtonFont,
                 UseVisualStyleBackColor = true
