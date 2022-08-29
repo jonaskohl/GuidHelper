@@ -31,44 +31,87 @@ namespace GuidHelper
 
             Color cGradientStart, cGradientEnd, cBorder, cText, cTextShadow, cHighlight, cEdge, cGlow;
             int iTextShadowOffset, iGlowSize;
-            if (IsMouseDown)
+            var bd = Screen.FromControl(this).BitsPerPixel;
+            if (bd <= 8)
             {
-                cGradientStart = Color.FromArgb(255, 216, 18);
-                cGradientEnd = Color.FromArgb(252, 222, 68);
-                cBorder = Color.FromArgb(153, 128, 0);
-                cText = Color.FromArgb(0, 0, 0);
-                cTextShadow = Color.FromArgb(192, 255, 255, 255);
-                cHighlight = Color.FromArgb(32, 61, 39, 1);
-                cEdge = Color.FromArgb(64, 255, 255, 255);
-                cGlow = Color.FromArgb(72, 255, 255, 255);
-                iTextShadowOffset = 1;
-                iGlowSize = 4;
-            }
-            else if (IsMouseOver)
-            {
-                cGradientStart = Color.FromArgb(51, 139, 255);
-                cGradientEnd = Color.FromArgb(28, 125, 252);
-                cBorder = Color.FromArgb(10, 52, 107);
-                cText = Color.FromArgb(255, 255, 255);
-                cTextShadow = Color.FromArgb(128, 0, 0, 0);
-                cHighlight = Color.FromArgb(128, 255, 255, 255);
-                cEdge = Color.FromArgb(32, 2, 26, 59);
-                cGlow = Color.FromArgb(96, 255, 255, 255);
-                iTextShadowOffset = -1;
-                iGlowSize = 6;
+                if (IsMouseDown)
+                {
+                    cGradientStart = cGradientEnd = Color.FromArgb(255, 255, 85);
+                    cBorder = Color.FromArgb(127, 95, 0);
+                    cText = Color.FromArgb(0, 0, 0);
+                    cTextShadow = Color.FromArgb(0, 255, 255, 255);
+                    cHighlight = Color.FromArgb(255, 255, 255, 170);
+                    cEdge = Color.FromArgb(255, 255, 255, 255);
+                    cGlow = Color.FromArgb(0, 255, 255, 255);
+                    iTextShadowOffset = 0;
+                    iGlowSize = 0;
+                }
+                else if (IsMouseOver)
+                {
+                    cGradientStart = cGradientEnd = Color.FromArgb(0, 127, 255);
+                    cBorder = Color.FromArgb(0, 0, 128);
+                    cText = Color.FromArgb(255, 255, 255);
+                    cTextShadow = Color.FromArgb(0, 0, 0, 0);
+                    cHighlight = Color.FromArgb(255, 170, 223, 255);
+                    cEdge = Color.FromArgb(255, 42, 63, 255);
+                    cGlow = Color.FromArgb(0, 255, 255, 255);
+                    iTextShadowOffset = 0;
+                    iGlowSize = 0;
+                }
+                else
+                {
+                    cGradientStart = cGradientEnd = Color.FromArgb(192, 192, 192);
+                    cBorder = Color.FromArgb(42, 63, 85);
+                    cText = Color.FromArgb(0, 0, 0);
+                    cTextShadow = Color.FromArgb(0, 255, 255, 255);
+                    cHighlight = Color.FromArgb(255, 255, 255);
+                    cEdge = Color.FromArgb(128, 128, 128);
+                    cGlow = Color.FromArgb(0, 255, 255, 255);
+                    iTextShadowOffset = 0;
+                    iGlowSize = 0;
+                }
             }
             else
             {
-                cGradientStart = Color.FromArgb(242, 248, 250);
-                cGradientEnd = Color.FromArgb(216, 225, 230);
-                cBorder = Color.FromArgb(157, 165, 168);
-                cText = Color.FromArgb(0, 0, 0);
-                cTextShadow = Color.FromArgb(192, 255, 255, 255);
-                cHighlight = Color.FromArgb(128, 255, 255, 255);
-                cEdge = Color.FromArgb(24, 19, 33, 38);
-                cGlow = Color.FromArgb(72, 255, 255, 255);
-                iTextShadowOffset = 1;
-                iGlowSize = 4;
+                if (IsMouseDown)
+                {
+                    cGradientStart = Color.FromArgb(255, 216, 18);
+                    cGradientEnd = Color.FromArgb(252, 222, 68);
+                    cBorder = Color.FromArgb(153, 128, 0);
+                    cText = Color.FromArgb(0, 0, 0);
+                    cTextShadow = Color.FromArgb(192, 255, 255, 255);
+                    cHighlight = Color.FromArgb(32, 61, 39, 1);
+                    cEdge = Color.FromArgb(64, 255, 255, 255);
+                    cGlow = Color.FromArgb(72, 255, 255, 255);
+                    iTextShadowOffset = 1;
+                    iGlowSize = 4;
+                }
+                else if (IsMouseOver)
+                {
+                    cGradientStart = Color.FromArgb(51, 139, 255);
+                    cGradientEnd = Color.FromArgb(28, 125, 252);
+                    cBorder = Color.FromArgb(10, 52, 107);
+                    cText = Color.FromArgb(255, 255, 255);
+                    cTextShadow = Color.FromArgb(128, 0, 0, 0);
+                    cHighlight = Color.FromArgb(128, 255, 255, 255);
+                    cEdge = Color.FromArgb(32, 2, 26, 59);
+                    cGlow = Color.FromArgb(96, 255, 255, 255);
+                    iTextShadowOffset = -1;
+                    iGlowSize = 6;
+                }
+                else
+                {
+                    cGradientStart = Color.FromArgb(242, 248, 250);
+                    cGradientEnd = Color.FromArgb(216, 225, 230);
+                    cBorder = Color.FromArgb(157, 165, 168);
+                    cText = Color.FromArgb(0, 0, 0);
+                    cTextShadow = Color.FromArgb(192, 255, 255, 255);
+                    cHighlight = Color.FromArgb(128, 255, 255, 255);
+                    cEdge = Color.FromArgb(24, 19, 33, 38);
+                    cGlow = Color.FromArgb(72, 255, 255, 255);
+                    iTextShadowOffset = 1;
+                    iGlowSize = 4;
+                }
             }
 
             using (var b = new LinearGradientBrush(ClientRectangle, cGradientStart, cGradientEnd, 90f))

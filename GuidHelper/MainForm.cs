@@ -110,5 +110,43 @@ namespace GuidHelper
             using (var f = new AboutForm())
                 f.ShowDialog(this);
         }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+            /*
+            var bounds = new Rectangle(0, - panel3.Height / 2, panel3.Width, panel3.Height);
+            using (var ellipsePath = new GraphicsPath())
+            {
+                ellipsePath.AddEllipse(bounds);
+                using (var brush = new PathGradientBrush(ellipsePath))
+                {
+                    brush.CenterPoint = new PointF(bounds.Width / 2f, bounds.Height / 2f);
+                    brush.CenterColor = Color.FromArgb(220, 220, 220);
+                    brush.SurroundColors = new[] { Color.White };
+                    brush.FocusScales = new PointF(0, 0);
+
+                    e.Graphics.FillRectangle(brush, bounds);
+                }
+            }
+
+            var lbounds = new Rectangle(0, 0, Width, 1);
+            var lcolor = Color.FromArgb(199, 199, 199);
+            using (var b = new LinearGradientBrush(lbounds, Color.Black, Color.Black, 0f)
+            {
+                InterpolationColors = new ColorBlend()
+                {
+                    Colors = new[] { Color.FromArgb(0, lcolor), lcolor, Color.FromArgb(0, lcolor) },
+                    Positions = new[] { 0.0f, 0.5f, 1.0f }
+                }
+            })
+                e.Graphics.FillRectangle(b, lbounds);
+            */
+
+            using (var b = new LinearGradientBrush(panel3.ClientRectangle, Color.FromArgb(244, 245, 247), Color.FromArgb(209, 210, 212), 90f))
+                e.Graphics.FillRectangle(b, panel3.ClientRectangle);
+
+            using (var p = new Pen(Color.FromArgb(199, 199, 199), 1))
+                e.Graphics.DrawLine(p, 0, 0, Width, 0);
+        }
     }
 }
